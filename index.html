@@ -1,119 +1,580 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>John Kenneth Asiñero — Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="John Kenneth Asiñero — Licensed Civil Engineer, Construction Estimator, Quantity Surveyor and Project Coordinator." />
+  <title>John Kenneth Asiñero | Construction Estimator Portfolio</title>
+
   <style>
-    :root { --bg:#0f172a; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --accent:#22d3ee; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-           background: linear-gradient(180deg, var(--bg), #0b1026 60%); color: var(--text); }
-    .wrap { max-width: 820px; margin: 6vh auto; padding: 24px; }
-    header { text-align:center; margin-bottom: 28px; }
-    h1 { font-size: 28px; margin: 0 0 8px; }
-    p.lead { color: var(--muted); margin: 0; }
-    .card { background: rgba(17,24,39,.7); border:1px solid rgba(255,255,255,.06);
-            border-radius:16px; padding: 22px; backdrop-filter: blur(6px); }
-    .grid { display:grid; gap:12px; margin: 14px 0 4px; }
-    .btn { display:flex; align-items:center; justify-content:space-between;
-           padding:14px 16px; border-radius:12px; text-decoration:none; color:var(--text);
-           background:#0b1227; border:1px solid rgba(255,255,255,.08); }
-    .btn:hover { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(34,211,238,.15) inset; }
-    small { color: var(--muted); }
-    footer { text-align:center; margin-top: 22px; color: var(--muted); font-size: 14px; }
+    :root {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #172033;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --primary-soft: #eff6ff;
+      --hero: #081a32;
+      --hero-2: #0f2a4d;
+      --shadow: 0 14px 34px rgba(15, 23, 42, .08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: auto; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(37, 99, 235, .28), transparent 28%),
+        linear-gradient(135deg, var(--hero), var(--hero-2));
+      color: white;
+      padding: 68px 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -160px auto;
+      width: 360px;
+      height: 360px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .portrait-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .portrait-ring {
+      width: 280px;
+      height: 280px;
+      padding: 7px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(96,165,250,.48));
+      box-shadow: 0 24px 55px rgba(0,0,0,.30);
+    }
+
+    .portrait {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center 24%;
+      border-radius: 50%;
+      background: #e5e7eb;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 7px 12px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #dbeafe;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.55rem, 6vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: -2px;
+      margin-bottom: 14px;
+    }
+
+    .role {
+      color: #bfdbfe;
+      font-size: clamp(1.02rem, 2vw, 1.28rem);
+      font-weight: 750;
+      margin-bottom: 8px;
+    }
+
+    .specialties {
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      color: #dbe4ef;
+      font-size: .92rem;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 800;
+      transition: .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: white;
+      color: #0f172a;
+      box-shadow: 0 8px 20px rgba(0,0,0,.16);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.25);
+    }
+
+    main { padding: 50px 0 70px; }
+    section { margin-bottom: 50px; }
+
+    .section-title { margin-bottom: 18px; }
+    .section-title h2 { font-size: 1.75rem; letter-spacing: -.4px; margin-bottom: 4px; }
+    .section-title p { color: var(--muted); max-width: 760px; }
+
+    .profile-card {
+      padding: 28px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      color: #475569;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .skill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      border: 1px solid #dbeafe;
+      color: var(--primary-dark);
+      font-size: .84rem;
+      font-weight: 750;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 225px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, .05);
+      transition: .18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #bfdbfe;
+      box-shadow: 0 16px 32px rgba(15, 23, 42, .10);
+    }
+
+    .card.featured {
+      grid-column: span 2;
+      min-height: 245px;
+      background: linear-gradient(135deg, #eff6ff, #fff);
+      border-color: #bfdbfe;
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      font-size: 1.4rem;
+    }
+
+    .card h3 { font-size: 1.12rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: .91rem; margin-bottom: 18px; }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .file-type {
+      color: var(--primary);
+      font-size: .74rem;
+      font-weight: 850;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .view { font-size: .83rem; font-weight: 800; }
+
+    .remote-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .remote {
+      padding: 20px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: .18s ease;
+    }
+
+    .remote:hover {
+      transform: translateY(-2px);
+      background: white;
+      box-shadow: 0 8px 18px rgba(15,23,42,.06);
+    }
+
+    .remote h3 { font-size: .97rem; margin-bottom: 4px; }
+    .remote p { color: var(--muted); font-size: .84rem; }
+
+    footer {
+      background: var(--hero);
+      color: #94a3b8;
+      text-align: center;
+      padding: 30px 0;
+      font-size: .86rem;
+    }
+
+    footer strong { color: white; }
+
+    @media (max-width: 820px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+      }
+
+      .portrait-ring {
+        width: 210px;
+        height: 210px;
+      }
+
+      .contact, .hero-actions { justify-content: center; }
+    }
+
+    @media (max-width: 760px) {
+      .portfolio-grid, .remote-grid { grid-template-columns: 1fr; }
+      .card.featured { grid-column: span 1; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 48px 0; }
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
+      .card, .profile-card { padding: 20px; }
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <h1>John Kenneth Asiñero</h1>
-      <p class="lead">Licensed Civil Engineer • Estimator • Project Coordinator • Technical Draftsman • Virtual Assistant</p>
-<p class="lead">📍Villanueva, Philippines • 📞0952-476-7871 • 📩asinero.wfh@gmail.com</p>
-    </header>
+  <header class="hero">
+    <div class="container hero-grid">
 
-    <section class="card">
-      <h2 style="margin:0 0 10px;">Portfolio Links</h2>
-      <div class="grid">
-        <!-- Replace the href values with your Google Drive URLs -->
-<a class="btn" href="https://tinyurl.com/CV-Asinero-J-K" target="_blank" rel="noopener">
-          <span>📋 Resume </span><small>PDF</small>
+      <div class="portrait-wrap">
+        <div class="portrait-ring">
+          <img
+            src="john-kenneth-asinero.jpg"
+            alt="John Kenneth Asiñero"
+            class="portrait"
+          />
+        </div>
+      </div>
 
-<a class="btn" href="https://drive.google.com/drive/folders/1oEFtHXJlPXj6vhYdHS8cYHIiY_qvswHZ?usp=drive_link" target="_blank" rel="noopener">
-          <span>🪪 Professional Development Certificates </span><small>PDF</small>
+      <div>
+        <div class="badge">Licensed Civil Engineer</div>
 
-<a class="btn" href="https://www.loom.com/share/4eaf966eec2c455fbd5630c986a5bf0b" target="_blank" rel="noopener">
-          <span>🎥 Quick Self-introduction </span><small>Video/MP4</small>
+        <h1>John Kenneth Asiñero</h1>
 
-        <a class="btn" 
-href="https://drive.google.com/drive/folders/1ov02i8sH0Q3Cw1Hgf6lqkHOSE6YOFHmV?usp=drive_link" target="_blank" rel="noopener">
-          <span>📁 Estimating & Takeoff Portfolio (Building, Civil/Roads, Plumbing, Fire Services) </span><small>PDF/XLSX/CAD</small>
+        <p class="role">
+          Construction Estimator • Quantity Surveyor • Project Coordinator
+        </p>
+
+        <p class="specialties">
+          Building • Fitout • Civil / Roadworks • Plumbing • Fire Services
+        </p>
+
+        <div class="contact">
+          <span>📍 Villanueva, Philippines</span>
+          <span>📞 0952-476-7871</span>
+          <span>📩 asinero.wfh@gmail.com</span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary"
+             href="https://tinyurl.com/CV-Asinero-J-K"
+             target="_blank"
+             rel="noopener noreferrer">
+            📋 View Resume
+          </a>
+
+          <a class="btn btn-secondary"
+             href="https://www.loom.com/share/4eaf966eec2c455fbd5630c986a5bf0b"
+             target="_blank"
+             rel="noopener noreferrer">
+            🎥 Watch Introduction
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section>
+      <div class="section-title">
+        <h2>Professional Profile</h2>
+      </div>
+
+      <div class="profile-card">
+        Licensed Civil Engineer with experience in construction estimating,
+        quantity takeoffs, BOQ preparation, cost planning, tendering, supplier
+        RFQs, project coordination, and technical documentation. Experienced
+        across building, fitout, civil, roadworks, plumbing, and fire-services
+        projects, including remote estimating support for international
+        construction teams.
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Core Capabilities</h2>
+        <p>Estimating, commercial, technical, and project-support competencies.</p>
+      </div>
+
+      <div class="skills">
+        <span class="skill">Quantity Takeoff</span>
+        <span class="skill">Cost Estimating</span>
+        <span class="skill">BOQ Preparation</span>
+        <span class="skill">Tendering</span>
+        <span class="skill">Supplier RFQs</span>
+        <span class="skill">Unit Rate Analysis</span>
+        <span class="skill">Labour & Material Pricing</span>
+        <span class="skill">Variation Pricing</span>
+        <span class="skill">Project Coordination</span>
+        <span class="skill">PlanSwift</span>
+        <span class="skill">Bluebeam</span>
+        <span class="skill">Groundplan</span>
+        <span class="skill">simPRO</span>
+        <span class="skill">Microsoft Excel</span>
+        <span class="skill">AutoCAD</span>
+        <span class="skill">Civil 3D</span>
+        <span class="skill">Procore</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Featured Portfolio</h2>
+        <p>
+          Selected examples demonstrating estimating methodology,
+          technical understanding, and project coordination capability.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+
+        <a class="card featured"
+           href="https://drive.google.com/drive/folders/1ov02i8sH0Q3Cw1Hgf6lqkHOSE6YOFHmV?usp=drive_link"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div>
+            <div class="icon">📁</div>
+            <h3>Estimating & Quantity Takeoff Portfolio</h3>
+            <p>
+              Selected construction estimating samples covering building,
+              civil / roadworks, plumbing, and underground fire services.
+              Includes quantity takeoffs, BOQs, pricing worksheets, drawings,
+              markups, and supporting tender documentation.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span class="file-type">PDF • XLSX • DOCX • CAD</span>
+            <span class="view">View Portfolio →</span>
+          </div>
         </a>
-        <a class="btn" href="https://docs.google.com/spreadsheets/d/150C8O5enRLFhIq2fbhm16l-I4dl3XSiR/edit?usp=drive_link&ouid=102398971267312113061&rtpof=true&sd=true" target="_black" rel="noopener">
-          <span>📈 Project Management Tracking (Sample) </span><small>XLSX</small>
+
+        <a class="card"
+           href="https://drive.google.com/file/d/1h5Sl3ElxXXSLUR0ED1uR9ddxFl4HA3LJ/view?usp=sharing"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div>
+            <div class="icon">🔢</div>
+            <h3>Detailed Unit Price Analysis</h3>
+            <p>
+              Detailed construction rate build-up demonstrating labour,
+              materials, equipment, productivity, and unit-cost analysis.
+              Sample is based on civil / roadworks estimating methodology.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span class="file-type">XLSX • PDF</span>
+            <span class="view">View Sample →</span>
+          </div>
         </a>
-        <a class="btn" href="https://drive.google.com/file/d/1h5Sl3ElxXXSLUR0ED1uR9ddxFl4HA3LJ/view?usp=sharing" target="_blank" rel="noopener">
-          <span>🔢 Detailed Unit Price Analysis (Sample) </span><small>XLSX/PDF</small>
+
+        <a class="card"
+           href="https://drive.google.com/file/d/191CrtV0BNr7MmJm_elLSdtladhHPfMwF/view?usp=sharing"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div>
+            <div class="icon">📐</div>
+            <h3>Detailed Engineering Design</h3>
+            <p>
+              Civil engineering design sample demonstrating technical
+              drawing interpretation, design documentation, AutoCAD,
+              and Civil 3D capability.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span class="file-type">CAD • Civil 3D • PDF</span>
+            <span class="view">View Sample →</span>
+          </div>
         </a>
-        <a class="btn" href="https://drive.google.com/file/d/191CrtV0BNr7MmJm_elLSdtladhHPfMwF/view?usp=sharing" target="_blank" rel="noopener">
-          <span>📐 Detailed Engineering Design (Sample) </span><small>CAD/Civil3D/PDF</small>
-  <a class="btn" href="https://drive.google.com/drive/folders/1aUB-w3OqOppUq4Cfn7WsQGj_D2zduc11?usp=sharing" target="_blank" rel="noopener">
-          <span>📃 Bidding Docs Template (Sample) </span><small>XLSX/DOCX</small>
-<a class="btn" href="https://drive.google.com/file/d/17LUoKJ6sj1yRENWXpRgenBr7anunGP3v/view?usp=sharing" target="_blank" rel="noopener">
-          <span>📃 Standard Operating Procedure Template (Sample) </span><small>PDF/DOCX</small>
-<a class="btn" href="https://drive.google.com/file/d/1g62G8u3L8lm2We10byNrU549XJ0a_Aox/view?usp=drive_link" target="_blank" rel="noopener">
-          <span>⌨️ Typing Speed </span><small>PDF</small>
-<a class="btn" href="https://www.123test.com/report/7K2HYQ3NDA9YKHNVMM/" target="_blank" rel="noopener">
-          <span>🧑 DISC Personality Report </span><small>Web</small>
-  <a class="btn" href="https://drive.google.com/drive/folders/14Gxd5Y6mD6It4-xGnyroK79I0tECqX--?usp=sharing" target="_blank" rel="noopener">
-          <span>💻 PC/Laptop Device Specification </span><small>Photo</small>
-    <a class="btn" href="https://drive.google.com/file/d/1IKUWI3c9-NB4MrN7f0JB1M-E_t00NHo6/view?usp=sharing" target="_blank" rel="noopener">
-          <span>👨🏽‍💻 My Portable Workstation </span><small>Photo</small>
-  
-<a
 
-<button class="btn" type="button" onclick="showAndCopyEmail()">
-    <span id="contactTitle">📧 Get in Touch</span>
-    <small id="contactSubtitle">Click to reveal</small>
-</button>
+        <a class="card"
+           href="https://docs.google.com/spreadsheets/d/150C8O5enRLFhIq2fbhm16l-I4dl3XSiR/edit?usp=drive_link&ouid=102398971267312113061&rtpof=true&sd=true"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div>
+            <div class="icon">📈</div>
+            <h3>Project Management & Tender Tracker</h3>
+            <p>
+              Sample tracking system for project deliverables, tender
+              deadlines, responsibilities, progress, and coordination activities.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span class="file-type">XLSX</span>
+            <span class="view">View Sample →</span>
+          </div>
+        </a>
 
-<script>
-let emailVisible = false;
-const email = "asinero.wfh@gmail.com";
-
-async function showAndCopyEmail() {
-    const title = document.getElementById("contactTitle");
-    const subtitle = document.getElementById("contactSubtitle");
-
-    if (!emailVisible) {
-        title.textContent = "📩 Kindly click to copy email";
-        subtitle.textContent = email;
-        emailVisible = true;
-        return;
-    }
-
-    try {
-        await navigator.clipboard.writeText(email);
-        subtitle.textContent = "✓ Copied to clipboard!";
-
-        setTimeout(() => {
-            subtitle.textContent = email;
-        }, 2000);
-    } catch (err) {
-        subtitle.textContent = email;
-    }
-}
-</script>
-</a>
-
+        <a class="card"
+           href="https://drive.google.com/drive/folders/1oEFtHXJlPXj6vhYdHS8cYHIiY_qvswHZ?usp=drive_link"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div>
+            <div class="icon">🪪</div>
+            <h3>Professional Development Certificates</h3>
+            <p>
+              Professional training, technical development,
+              and relevant competency certificates.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span class="file-type">PDF</span>
+            <span class="view">View Certificates →</span>
+          </div>
+        </a>
 
       </div>
     </section>
 
-    <footer>
-      © <span id="y"></span> John Kenneth Asiñero
-    </footer>
-  </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+    <section>
+      <div class="section-title">
+        <h2>Remote Work Readiness</h2>
+        <p>Supporting information for remote and international construction roles.</p>
+      </div>
+
+      <div class="remote-grid">
+
+        <a class="remote"
+           href="https://drive.google.com/drive/folders/14Gxd5Y6mD6It4-xGnyroK79I0tECqX--?usp=sharing"
+           target="_blank"
+           rel="noopener noreferrer">
+          <h3>💻 PC / Laptop Specifications</h3>
+          <p>Primary and backup device information for remote work.</p>
+        </a>
+
+        <a class="remote"
+           href="https://drive.google.com/file/d/1IKUWI3c9-NB4MrN7f0JB1M-E_t00NHo6/view?usp=sharing"
+           target="_blank"
+           rel="noopener noreferrer">
+          <h3>👨🏽‍💻 Workstation Setup</h3>
+          <p>Dedicated and portable remote workstation setup.</p>
+        </a>
+
+        <a class="remote"
+           href="https://drive.google.com/file/d/1g62G8u3L8lm2We10byNrU549XJ0a_Aox/view?usp=drive_link"
+           target="_blank"
+           rel="noopener noreferrer">
+          <h3>⌨️ Typing Speed</h3>
+          <p>Typing and productivity assessment.</p>
+        </a>
+
+        <a class="remote"
+           href="https://www.123test.com/report/7K2HYQ3NDA9YKHNVMM/"
+           target="_blank"
+           rel="noopener noreferrer">
+          <h3>🧑 DISC Personality Report</h3>
+          <p>Professional behavioural assessment.</p>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>John Kenneth Asiñero</strong><br />
+      Licensed Civil Engineer • Construction Estimator • Quantity Surveyor
+    </div>
+  </footer>
 </body>
 </html>
